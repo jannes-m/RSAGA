@@ -11,7 +11,7 @@ test_that("Write DEM to disc", {
   
   write.sgrd(data = dem, file = "/home/travis/dem", header = dem$header, env = env, check.module.exists=FALSE)
   
-  
+  print(list.files("/home/travis/"))
   
   #test <- read.sgrd("dem.sgrd", env=env, check.module.exists=FALSE)
   
