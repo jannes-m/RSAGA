@@ -9,15 +9,11 @@ test_that("Write DEM to disc", {
 
   data(landslides)
   
-  write.sgrd(data = dem, file = "/home/travis/dem", header = dem$header, env = env, check.module.exists=FALSE)
+  write.sgrd(data = dem, file = file.path(tempdir(), "dem.sgrd"), header = dem$header, env = env, check.module.exists=FALSE)
   
-  print(list.files("/home/travis/"))
+  test <- read.sgrd(file.path(tempdir(), "dem.sgrd"), env=env, check.module.exists=FALSE)
   
-  #test <- read.sgrd("dem.sgrd", env=env, check.module.exists=FALSE)
-  
-  expect_true(TRUE)
-  
-  #digest(test, algo="md5") %in% c("137181ee7294515ceb6ccf04fe975cfd")
+  expect_true(digest(test, algo="md5") %in% c("137181ee7294515ceb6ccf04fe975cfd"))
   
 })
 
