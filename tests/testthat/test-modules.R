@@ -17,6 +17,18 @@ test_that("Write DEM to disc", {
   
 })
 
+test_that("Slope", {
+  
+  env <- rsaga.env2()
+  
+  rsaga.slope.asp.curv(file.path(tempdir(), "dem.sgrd"), out.slope = file.path(tempdir(), "slope.sgrd"), method = "poly2zevenbergen",
+                       env = env, check.module.exists=FALSE) 
+  
+  test <- read.sgrd(file.path(tempdir(), "slope.sgrd"), env=env, check.module.exists=FALSE)
+  
+  expect_true(digest(test, algo="md5") %in% c("b2852c8fa289636908e1322ee33c3c0b",
+                                              "b1b0c8c02db274cad530d2021abd7032"))
+})
 
 
 
