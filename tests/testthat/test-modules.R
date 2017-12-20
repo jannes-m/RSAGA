@@ -9,7 +9,7 @@ test_that("Write DEM to disc", {
 
   data(landslides)
   
-  write.sgrd(data = dem, file = "/home/travis/dem", header = dem$header, env = env)
+  write.sgrd(data = dem, file = "/home/travis/dem", header = dem$header, env = env, check.module.exists=FALSE)
   
   
   
