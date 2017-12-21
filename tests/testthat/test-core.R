@@ -4,9 +4,7 @@ test_that("Link to saga", {
   
   env <- rsaga.env2()
   
-  print(env)
-  
-  expect_true("2.3.1" %in% env$version)
+  expect_equal(typeof(env$version), "character")
   
 })
 
