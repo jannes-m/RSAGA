@@ -1,6 +1,17 @@
 context("RSAGA-core")
 
+test_that("Link to saga", {
+  
+  env <- rsaga.env2()
+  
+  print(env)
+  
+  expect_true("2.3.1" %in% env$version)
+  
+})
+
 test_that("Modules", {
+  testthat::skip_on_travis()
   
   env <- rsaga.env2()
   
@@ -11,6 +22,7 @@ test_that("Modules", {
 })
 
 test_that("Usage", {
+  testthat::skip_on_travis()
   
   env <- rsaga.env2()
   
@@ -21,6 +33,7 @@ test_that("Usage", {
 })
 
 test_that("Check if module exists", {
+  testthat::skip_on_travis()
   
   env <- rsaga.env2()
   
